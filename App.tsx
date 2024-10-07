@@ -1,5 +1,4 @@
 import React from "react";
-import { Provider } from "react-redux";
 import { NavigationContainer } from "@react-navigation/native";
 import RootNavigator from "./app/navigation/RootNavigator";
 import { StatusBar } from "react-native";
