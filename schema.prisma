@@ -9,14 +9,15 @@ datasource db {
 }
 
 model Users {
-    id           Int            @id @default(autoincrement())
-    username     String?        @default("")
-    password     String?
-    email        String?        @unique
-    createdAt    DateTime       @default(now())
-    transactions Transactions[]
-    transfers    Transfer[]
-    wallet       Wallet[]
+    id                  Int            @id @default(autoincrement())
+    username            String?        @default("")
+    password            String?
+    email               String?        @unique
+    createdAt           DateTime       @default(now())
+    transactions        Transactions[]
+    transfers           Transfer[]
+    wallet              Wallet[]
+    selectedWalletId    Int            @default(1)
 }
 
 model Types {
