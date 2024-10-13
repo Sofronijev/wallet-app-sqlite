@@ -26,6 +26,7 @@ import { deleteTransactionAlert, formatFormAmountValue, handleTransactionError }
 import { transactionStrings } from "constants/strings";
 import CustomButton from "components/CustomButton";
 import WalletPicker from "./WalletPicker";
+import { getAllWallets } from "app/services/wallet";
 
 type Props = {
   navigation: StackNavigationProp<AppStackParamList>;
@@ -36,6 +37,7 @@ const TransactionForm: React.FC<Props> = ({ navigation, route }) => {
   const editData = route.params?.editData;
   const sheetRef = useRef<TransactionBottomSheetType>(null);
   const [hasSubmittedForm, setHasSubmittedForm] = useState(false);
+  const wallets = getAllWallets();
   const walletId = 1;
 
   const onTransactionSubmit = async (values: TransactionFromInputs) => {
@@ -89,8 +91,8 @@ const TransactionForm: React.FC<Props> = ({ navigation, route }) => {
     onSubmit: (values) => onTransactionSubmit(values),
   });
 
-  const walletName = '';
-  const walletCurrency =" currencySymbol || currencyCode";
+  const walletName = "";
+  const walletCurrency = " currencySymbol || currencyCode";
 
   useEffect(() => {
     if (editData) {

@@ -3,10 +3,10 @@ import { reactiveHooksExtension } from "@prisma/react-native";
 
 const baseClient = new PrismaClient({
   log: [
-    { emit: "stdout", level: "query" },
-    { emit: "stdout", level: "info" },
-    { emit: "stdout", level: "warn" },
-    { emit: "stdout", level: "error" },
+    // { emit: "stdout", level: "query" },
+    // { emit: "stdout", level: "info" },
+    // { emit: "stdout", level: "warn" },
+    // { emit: "stdout", level: "error" },
   ],
 });
 
