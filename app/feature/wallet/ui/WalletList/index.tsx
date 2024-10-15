@@ -13,6 +13,8 @@ import { showBalancePrompt } from "feature/settingsScreen/modules";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { AppStackParamList } from "navigation/routes";
+import { hooksPrisma } from "dbClient";
+import { Wallet } from "@prisma/client";
 
 const WALLET_SPACING = 8;
 const HORIZONTAL_PADDING = 16;
@@ -23,10 +25,7 @@ const WalletList: React.FC = () => {
   const { width } = useWindowDimensions();
   const navigation = useNavigation<StackNavigationProp<AppStackParamList>>();
 
-  const userId = 1;
-
-  const wallets = {};
-  const walletsArray = Object.values(wallets);
+  const wallets = hooksPrisma.wallet.useFindMany();
 
   const onWalletChange = (item: unknown) => {};
 
@@ -36,7 +35,7 @@ const WalletList: React.FC = () => {
 
   const walletWidth = width - HORIZONTAL_PADDING * 2;
 
-  const renderWallet: ListRenderItem<unknown> = ({ item }) => {
+  const renderWallet: ListRenderItem<Wallet> = ({ item }) => {
     return (
       <View style={[styles.walletContainer, { borderColor: item.color }]}>
         <Label style={styles.walletName}>{item.walletName}</Label>
@@ -60,11 +59,11 @@ const WalletList: React.FC = () => {
 
   return (
     <>
-      {!walletsArray.length ? (
+      {!wallets.length ? (
         <View style={[styles.nullWallet, { width: walletWidth }]}></View>
       ) : (
         <Carousel
-          data={walletsArray}
+          data={wallets}
           renderItem={renderWallet}
           keyExtractor={walletKeyExtractor}
           itemWidth={walletWidth}

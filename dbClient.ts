@@ -10,7 +10,7 @@ const baseClient = new PrismaClient({
   ],
 });
 
-export const extendedClient = baseClient.$extends(reactiveHooksExtension());
+export const hooksPrisma = baseClient.$extends(reactiveHooksExtension());
 
 export async function initializeDb() {
   try {

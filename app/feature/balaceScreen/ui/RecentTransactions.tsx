@@ -8,22 +8,22 @@ import ButtonText from "components/ButtonText";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { AppStackParamList } from "navigation/routes";
+import { hooksPrisma } from "dbClient";
 
 type RecentTransactionsProps = {
   isLoading: boolean;
-  // TODO
-  transactions: [];
   title?: string;
   nullScreen?: JSX.Element;
 };
 
 const RecentTransactions: React.FC<RecentTransactionsProps> = ({
   isLoading,
-  transactions,
   title,
   nullScreen,
 }) => {
   const navigation = useNavigation<StackNavigationProp<AppStackParamList>>();
+  const transactions = hooksPrisma.transactions.useFindMany({ take: 5, orderBy: { date: "desc" } });
+
   const hasTransactions = !!transactions?.length;
 
   const navigateToTransactionSearch = () => {

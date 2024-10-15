@@ -5,48 +5,51 @@ import Label from "components/Label";
 import CategoryIcon from "components/CategoryIcon";
 import { formatDecimalDigits } from "modules/numbers";
 import { CategoryNumber, transactionCategories } from "modules/transactionCategories";
-import { TransactionType } from "store/reducers/monthlyBalance/monthlyBalanceSlice";
 import { formatDayString } from "modules/timeAndDate";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { AppStackParamList } from "navigation/routes";
+import { Transactions } from "@prisma/client";
 
 type Props = {
-  transaction: TransactionType;
+  transaction: Transactions;
 };
 
 const TransactionsRow: React.FC<Props> = ({ transaction }) => {
+  if (!transaction) return null;
+
   const navigation = useNavigation<StackNavigationProp<AppStackParamList>>();
   const category = transactionCategories[transaction.categoryId];
-  const type = category.types[transaction.typeId];
+  const type = category.types[transaction.type_id];
   const hasDescription = !!transaction.description;
   // TODO!! get type from modules
   const transactionReceivedId = 70;
   const transactionSentId = 69;
   const isIncome =
     transaction.categoryId === CategoryNumber.income ||
-    transaction.typeId === transactionReceivedId;
+    transaction.type_id === transactionReceivedId;
 
   const openEditTransaction = () => {
     if (transaction.categoryId === CategoryNumber.transfer) {
       navigation.navigate("TransferForm", {
-        walletId: transaction.walletId,
+        walletId: transaction.wallet_id,
         editData: {
-          amount: transaction.amount,
-          transactionIdFrom: transaction.typeId === transactionSentId ? transaction.id : undefined,
-          transactionIdTo: transaction.typeId === transactionReceivedId ? transaction.id : undefined,
+          amount: transaction.amount.toNumber(),
+          transactionIdFrom: transaction.type_id === transactionSentId ? transaction.id : undefined,
+          transactionIdTo:
+            transaction.type_id === transactionReceivedId ? transaction.id : undefined,
         },
       });
     } else {
       navigation.navigate("Transaction", {
         editData: {
           id: transaction.id,
-          date: transaction.date,
-          amount: `${Math.abs(transaction.amount)}`,
+          date: transaction.date.toDateString(),
+          amount: `${Math.abs(transaction.amount.toNumber())}`,
           description: transaction.description,
           category,
           type,
-          walletId: `${transaction.walletId}`,
+          walletId: `${transaction.wallet_id}`,
         },
       });
     }
@@ -69,7 +72,7 @@ const TransactionsRow: React.FC<Props> = ({ transaction }) => {
       </View>
       <View>
         <Label style={[styles.price, isIncome && styles.incomeColor]}>
-          {`${formatDecimalDigits(transaction.amount)}`}
+          {`${formatDecimalDigits(transaction.amount.toNumber())}`}
         </Label>
         <View style={styles.dateContainer}>
           <Label style={styles.date} numberOfLines={1}>

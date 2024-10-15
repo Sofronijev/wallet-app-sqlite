@@ -1,7 +1,7 @@
-import { extendedClient } from "dbClient";
+import { hooksPrisma } from "dbClient";
 
 export const getAllWallets = () => {
-  return extendedClient.wallet.useFindMany();
+  return hooksPrisma.wallet.useFindMany();
 };
 
 // export const setWalletStartingBalance = async (data) => {

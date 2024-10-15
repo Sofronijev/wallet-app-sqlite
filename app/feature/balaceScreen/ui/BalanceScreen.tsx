@@ -1,5 +1,5 @@
 import { StyleSheet, View } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import AddButton from "components/AddButton";
 import WalletList from "feature/wallet/ui/WalletList";
 import { ScrollView } from "react-native-gesture-handler";
@@ -7,12 +7,15 @@ import RecentTransactions from "feature/balaceScreen/ui/RecentTransactions";
 import NullScreen from "components/NullScreen";
 import { showStartingBalancePrompt } from "feature/settingsScreen/modules";
 import MonthlyBalance from "./MonthlyBalance";
+import { hooksPrisma } from "dbClient";
 
 const BalanceScreen: React.FC = () => {
-  const transactions = [];
-  const activeWallet = [];
-  const walletId = 1;
-  const hasStartingBalance = 1;
+  const activeWallet = hooksPrisma.users.useFindFirst({
+    select: { selectedWallet: true },
+  })?.selectedWallet;
+
+  const walletId = activeWallet?.walletId;
+  const hasStartingBalance = !!activeWallet?.startingBalance;
 
   const onChangeStartingBalance = () => {
     if (!walletId) return;
@@ -28,7 +31,6 @@ const BalanceScreen: React.FC = () => {
         </View>
         <View style={styles.itemContainer}>
           <RecentTransactions
-            transactions={transactions}
             isLoading={false}
             title='Recent transactions'
             nullScreen={
