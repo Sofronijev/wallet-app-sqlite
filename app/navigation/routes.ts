@@ -1,4 +1,4 @@
-import { TransactionFromInputs } from "feature/transaction/modules/formValidation";
+import { TransactionFromInputs } from "app/features/balance/modules/transactionFormValidation";
 
 export type HomeStackParamList = {
   Balance: undefined;

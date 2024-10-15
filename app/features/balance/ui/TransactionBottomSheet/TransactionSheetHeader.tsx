@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import colors from "constants/colors";
-import { HEADER_TEXT_HEIGH } from "feature/transaction/modules";
+import { HEADER_TEXT_HEIGH } from "app/features/balance/modules/transaction";
 import { Category } from "modules/transactionCategories";
 import { FontAwesome } from "@expo/vector-icons";
 import Label from "components/Label";

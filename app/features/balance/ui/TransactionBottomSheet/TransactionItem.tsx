@@ -2,7 +2,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import CategoryIcon from "components/CategoryIcon";
 import { Category, Transaction } from "modules/transactionCategories";
-import { CATEGORIES_NUMBER_OF_ROWS } from "feature/transaction/modules";
+import { CATEGORIES_NUMBER_OF_ROWS } from "app/features/balance/modules/transaction";
 
 export const TRANSACTION_ITEM_HEIGHT = 85;
 const transactionWidth = 100 / CATEGORIES_NUMBER_OF_ROWS;

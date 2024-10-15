@@ -3,10 +3,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { useFormik } from "formik";
 import StyledLabelInput from "components/StyledLabelInput";
 import InputErrorLabel from "components/InputErrorLabel";
-import DatePickerInput from "feature/transaction/ui/DatePickerInput";
-import TransactionBottomSheet from "./TransactionBottomSheet";
+import DatePickerInput from "app/features/balance/ui/TransactionForm/DatePickerInput";
+import TransactionBottomSheet from "../TransactionBottomSheet";
 import { Category, Transaction } from "modules/transactionCategories";
-import { TransactionBottomSheetType } from "../modules/transactionBottomSheet";
+import { TransactionBottomSheetType } from "../../modules/transactionBottomSheet";
 import colors from "constants/colors";
 import { MaterialIcons } from "@expo/vector-icons";
 import { formatIsoDate } from "modules/timeAndDate";
@@ -18,11 +18,11 @@ import {
   initialTransactionFormValues,
   TransactionFromInputs,
   transactionValidationSchema,
-} from "../modules/formValidation";
+} from "../../modules/transactionFormValidation";
 import { RouteProp } from "@react-navigation/native";
 import { Ionicons, FontAwesome5 } from "@expo/vector-icons";
 import HeaderIcon from "components/HeaderIcon";
-import { deleteTransactionAlert, formatFormAmountValue, handleTransactionError } from "../modules";
+import { deleteTransactionAlert, formatFormAmountValue, handleTransactionError } from "../../modules/transaction";
 import { transactionStrings } from "constants/strings";
 import CustomButton from "components/CustomButton";
 import WalletPicker from "./WalletPicker";

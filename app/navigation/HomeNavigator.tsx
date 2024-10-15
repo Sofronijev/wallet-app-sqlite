@@ -3,8 +3,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import colors from "constants/colors";
 import { HomeStackParamList } from "./routes";
 import { Ionicons } from "@expo/vector-icons";
-import SettingsScreen from "feature/settingsScreen";
-import BalanceScreen from "feature/balaceScreen/ui/BalanceScreen";
+import SettingsScreen from "app/features/settings";
+import BalanceScreen from "app/features/balance/ui/BalanceTab/BalanceScreen";
 
 const Tab = createBottomTabNavigator<HomeStackParamList>();
 

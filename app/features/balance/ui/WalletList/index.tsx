@@ -8,7 +8,7 @@ import AppActivityIndicator from "components/AppActivityIndicator";
 
 import Carousel from "components/Carousel";
 import ButtonText from "components/ButtonText";
-import { showBalancePrompt } from "feature/settingsScreen/modules";
+import { showBalancePrompt } from "app/features/settings/modules";
 
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";

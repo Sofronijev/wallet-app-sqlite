@@ -15,7 +15,7 @@ import {
 import Separator from "components/Separator";
 import TransactionRowSelect from "./TransactionRowSelect";
 import TransactionItem, { TRANSACTION_ITEM_HEIGHT } from "./TransactionItem";
-import { CATEGORIES_NUMBER_OF_ROWS, HEADER_TEXT_HEIGH } from "feature/transaction/modules";
+import { CATEGORIES_NUMBER_OF_ROWS, HEADER_TEXT_HEIGH } from "app/features/balance/modules/transaction";
 import TransactionSheetHeader from "./TransactionSheetHeader";
 
 const removeCategories = (data: Category) =>

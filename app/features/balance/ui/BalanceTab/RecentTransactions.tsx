@@ -2,7 +2,7 @@ import { StyleSheet, View } from "react-native";
 import React from "react";
 import Label from "components/Label";
 import colors from "constants/colors";
-import TransactionsRow from "../../../components/TransactionRow";
+import TransactionsRow from "../../../../components/TransactionRow";
 import AppActivityIndicator from "components/AppActivityIndicator";
 import ButtonText from "components/ButtonText";
 import { useNavigation } from "@react-navigation/native";

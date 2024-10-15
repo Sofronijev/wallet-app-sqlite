@@ -3,13 +3,13 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeNavigator from "./HomeNavigator";
 import colors from "constants/colors";
 import { AppStackParamList } from "./routes";
-import TransactionForm from "feature/transaction/ui/TransactionForm";
+import TransactionForm from "app/features/balance/ui/TransactionForm/TransactionForm";
 import { transactionStrings } from "constants/strings";
-import TransactionSearch from "feature/transactionSearch/ui/TransactionSearch";
 import HeaderIcon from "components/HeaderIcon";
 import { Ionicons } from "@expo/vector-icons";
-import WalletSettings from "feature/settingsScreen/ui/wallets";
-import TransferForm from "feature/transfer/ui/TransferForm";
+import WalletSettings from "app/features/settings/ui/wallets";
+import TransferForm from "app/features/balance/ui/TransferFrom/TransferForm";
+import TransactionSearch from "app/features/balance/ui/TransactionSearch";
 
 const Stack = createNativeStackNavigator<AppStackParamList>();
 

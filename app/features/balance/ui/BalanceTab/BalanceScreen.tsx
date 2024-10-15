@@ -1,11 +1,11 @@
 import { StyleSheet, View } from "react-native";
 import React, { useEffect } from "react";
 import AddButton from "components/AddButton";
-import WalletList from "feature/wallet/ui/WalletList";
+import WalletList from "app/features/balance/ui/WalletList";
 import { ScrollView } from "react-native-gesture-handler";
-import RecentTransactions from "feature/balaceScreen/ui/RecentTransactions";
+import RecentTransactions from "app/features/balance/ui/BalanceTab/RecentTransactions";
 import NullScreen from "components/NullScreen";
-import { showStartingBalancePrompt } from "feature/settingsScreen/modules";
+import { showStartingBalancePrompt } from "app/features/settings/modules";
 import MonthlyBalance from "./MonthlyBalance";
 import { hooksPrisma } from "dbClient";
 

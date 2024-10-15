@@ -3,7 +3,7 @@ import React from "react";
 import colors from "constants/colors";
 import { formatDecimalDigits } from "modules/numbers";
 import ButtonText from "components/ButtonText";
-import { showBalancePrompt, showStartingBalancePrompt } from "feature/settingsScreen/modules";
+import { showBalancePrompt, showStartingBalancePrompt } from "app/features/settings/modules";
 
 type Props = {
   walletId: number;
