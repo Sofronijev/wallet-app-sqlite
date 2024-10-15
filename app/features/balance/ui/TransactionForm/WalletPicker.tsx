@@ -20,7 +20,7 @@ import React from "react";
 import StyledLabelInput from "components/StyledLabelInput";
 import { Ionicons } from "@expo/vector-icons";
 import colors from "constants/colors";
-import { getAllWallets } from "app/services/wallet";
+import useWallets from "../../hooks/useWallets";
 
 type Props = {
   value: string | undefined;
@@ -40,6 +40,7 @@ const customTriggerStyle: MenuTriggerProps["customStyles"] = {
 };
 
 const WalletPicker: React.FC<Props> = ({ value, onSelect, style }) => {
+  const { getAllWallets } = useWallets();
   const wallets = getAllWallets();
 
   // const walletArr = Object.values(wallets);

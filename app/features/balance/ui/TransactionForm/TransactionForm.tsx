@@ -22,11 +22,15 @@ import {
 import { RouteProp } from "@react-navigation/native";
 import { Ionicons, FontAwesome5 } from "@expo/vector-icons";
 import HeaderIcon from "components/HeaderIcon";
-import { deleteTransactionAlert, formatFormAmountValue, handleTransactionError } from "../../modules/transaction";
+import {
+  deleteTransactionAlert,
+  formatFormAmountValue,
+  handleTransactionError,
+} from "../../modules/transaction";
 import { transactionStrings } from "constants/strings";
 import CustomButton from "components/CustomButton";
 import WalletPicker from "./WalletPicker";
-import { getAllWallets } from "app/services/wallet";
+import useWallets from "../../hooks/useWallets";
 
 type Props = {
   navigation: StackNavigationProp<AppStackParamList>;
@@ -37,6 +41,8 @@ const TransactionForm: React.FC<Props> = ({ navigation, route }) => {
   const editData = route.params?.editData;
   const sheetRef = useRef<TransactionBottomSheetType>(null);
   const [hasSubmittedForm, setHasSubmittedForm] = useState(false);
+  const { getAllWallets } = useWallets();
+
   const wallets = getAllWallets();
   const walletId = 1;
 
